@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>El Diario — Daily Spanish Newsletter</title>
+<title>El Diario — Daily Spanish</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -24,65 +24,52 @@
     color: var(--ink);
     font-family: 'Fraunces', Georgia, serif;
     min-height: 100vh;
-    padding: 2rem 1rem 4rem;
+    padding: 0 0 4rem;
     background-image:
       radial-gradient(ellipse at 10% 20%, rgba(196,65,12,0.06) 0%, transparent 50%),
       radial-gradient(ellipse at 90% 80%, rgba(45,90,39,0.07) 0%, transparent 50%);
   }
 
-  .page {
-    max-width: 720px;
-    margin: 0 auto;
-    animation: fadeUp 0.7s ease both;
-  }
+  .page { max-width: 720px; margin: 0 auto; padding: 0 1rem; }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* MASTHEAD */
+  /* ── MASTHEAD ── */
   .masthead {
     border-top: 4px solid var(--ink);
     border-bottom: 2px solid var(--ink);
-    padding: 1.5rem 0 1rem;
-    margin-bottom: 0;
+    padding: 1.5rem 1rem 1rem;
     text-align: center;
-    position: relative;
   }
   .masthead-eyebrow {
     font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
+    font-size: 0.63rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--muted);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
   }
   .masthead h1 {
     font-family: 'Syne', sans-serif;
-    font-size: clamp(3.2rem, 10vw, 5.5rem);
+    font-size: clamp(3rem, 10vw, 5.5rem);
     font-weight: 800;
     line-height: 0.9;
     letter-spacing: -0.03em;
-    color: var(--ink);
   }
-  .masthead h1 span {
-    color: var(--rust);
-  }
+  .masthead h1 span { color: var(--rust); }
   .masthead-sub {
     font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
+    font-size: 0.63rem;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--muted);
-    margin-top: 0.6rem;
+    margin-top: 0.5rem;
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 1.2rem;
+    flex-wrap: wrap;
   }
-  .masthead-sub .sep { color: var(--gold); }
+  .sep { color: var(--gold); }
 
-  /* NAV RIBBON */
+  /* ── NAV ── */
   .nav-ribbon {
     display: flex;
     border-bottom: 2px solid var(--ink);
@@ -92,702 +79,669 @@
   .nav-ribbon::-webkit-scrollbar { display: none; }
   .nav-item {
     font-family: 'DM Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.18em;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    padding: 0.5rem 1rem;
+    padding: 0.48rem 0.9rem;
     border-right: 1px solid var(--ink);
     white-space: nowrap;
     color: var(--muted);
     flex-shrink: 0;
   }
-  .nav-item.active {
-    background: var(--ink);
-    color: var(--cream);
-  }
 
-  /* SECTIONS */
-  .section {
-    border-bottom: 1px solid rgba(26,18,6,0.25);
-    padding: 2rem 0;
-    animation: fadeUp 0.6s ease both;
-  }
-  .section:nth-child(2) { animation-delay: 0.1s; }
-  .section:nth-child(3) { animation-delay: 0.2s; }
-  .section:nth-child(4) { animation-delay: 0.3s; }
-  .section:nth-child(5) { animation-delay: 0.4s; }
-  .section:nth-child(6) { animation-delay: 0.5s; }
-
-  .section-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.8rem;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-  }
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: rgba(26,18,6,0.2);
-  }
-  .section-icon {
-    display: inline-block;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 22px;
-    font-size: 0.75rem;
-    flex-shrink: 0;
-  }
-
-  /* WORD OF THE DAY */
-  .wod-card {
-    background: var(--ink);
-    color: var(--cream);
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .wod-card::before {
-    content: '🌿';
-    position: absolute;
-    font-size: 6rem;
-    right: -10px;
-    top: -15px;
-    opacity: 0.12;
-    transform: rotate(15deg);
-  }
-  .wod-word {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(2.5rem, 8vw, 4rem);
-    font-weight: 800;
-    color: var(--gold);
-    line-height: 1;
-    margin-bottom: 0.3rem;
-  }
-  .wod-pronunciation {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.78rem;
-    color: rgba(245,237,216,0.55);
-    margin-bottom: 1rem;
-    letter-spacing: 0.05em;
-  }
-  .wod-pos {
-    display: inline-block;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    padding: 0.2rem 0.5rem;
-    margin-bottom: 0.8rem;
-  }
-  .wod-definition {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-    color: var(--cream);
-  }
-  .wod-example {
-    border-left: 3px solid var(--rust);
-    padding-left: 1rem;
-    font-style: italic;
-    font-size: 0.95rem;
-    color: rgba(245,237,216,0.8);
-    line-height: 1.6;
-  }
-  .wod-example em {
-    font-style: normal;
-    color: var(--cream);
-    font-weight: bold;
-  }
-  .wod-translation {
-    margin-top: 0.4rem;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    color: rgba(245,237,216,0.5);
-  }
-
-  /* GRAMMAR TIP */
-  .grammar-box {
-    background: var(--cream);
-    border: 2px solid var(--ink);
-    padding: 1.4rem 1.6rem;
-    position: relative;
-  }
-  .grammar-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
-  .grammar-rule {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: #3a2e1e;
-  }
-  .grammar-rule code {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.85rem;
-    background: rgba(200,145,42,0.18);
-    padding: 0.1rem 0.35rem;
-    border-radius: 2px;
-    color: var(--rust);
-  }
-  .grammar-examples {
-    margin-top: 1rem;
+  /* ── API KEY GATE ── */
+  #gate {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    min-height: 55vh;
+    gap: 1rem;
+    text-align: center;
+    padding: 2rem 0;
   }
-  .grammar-pair {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
-    font-size: 0.88rem;
-  }
-  .grammar-es {
-    font-style: italic;
-    color: var(--forest);
-    font-weight: bold;
-  }
-  .grammar-en { color: var(--muted); }
-
-  /* MUSIC SECTION */
-  .music-feature {
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-    gap: 1.5rem;
-    align-items: start;
-  }
-  @media (max-width: 520px) {
-    .music-feature { grid-template-columns: 1fr; }
-    .grammar-pair { grid-template-columns: 1fr; }
-  }
-  .music-headline {
+  .gate-title {
     font-family: 'Syne', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 0.5rem;
+    font-size: 1.6rem;
+    font-weight: 800;
   }
-  .music-body {
-    font-size: 0.95rem;
-    line-height: 1.75;
-    color: #3a2e1e;
-    margin-bottom: 0.8rem;
-  }
-  .vocab-chip {
-    display: inline-block;
-    background: var(--forest);
-    color: var(--cream);
+  .gate-sub {
     font-family: 'DM Mono', monospace;
     font-size: 0.65rem;
-    padding: 0.2rem 0.55rem;
-    letter-spacing: 0.1em;
-    margin: 0.2rem 0.15rem 0.2rem 0;
-  }
-  .music-sidebar {
-    background: var(--rust);
-    color: var(--cream);
-    padding: 1.2rem;
-  }
-  .sidebar-title {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    opacity: 0.7;
-    margin-bottom: 0.7rem;
-  }
-  .sidebar-artist {
-    font-family: 'Syne', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 0.3rem;
-  }
-  .sidebar-blurb {
-    font-size: 0.82rem;
-    line-height: 1.5;
-    opacity: 0.88;
-  }
-  .sidebar-divider {
-    border: none;
-    border-top: 1px solid rgba(245,237,216,0.3);
-    margin: 0.8rem 0;
-  }
-
-  /* SCIENCE/MAP SECTION */
-  .map-card {
-    border: 2px solid var(--sky);
-    padding: 1.5rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .map-card::after {
-    content: '🗺️';
-    position: absolute;
-    font-size: 5rem;
-    right: -5px;
-    bottom: -10px;
-    opacity: 0.1;
-    transform: rotate(-10deg);
-  }
-  .map-headline {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--sky);
-    margin-bottom: 0.5rem;
-    line-height: 1.2;
-  }
-  .map-body {
-    font-size: 0.95rem;
-    line-height: 1.75;
-    color: #3a2e1e;
-  }
-  .map-vocab {
-    margin-top: 1rem;
-    background: rgba(43,108,176,0.07);
-    padding: 0.8rem 1rem;
-    border-left: 3px solid var(--sky);
-  }
-  .map-vocab-title {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--sky);
-    margin-bottom: 0.5rem;
-  }
-  .map-vocab-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-  .map-vocab-item {
-    font-size: 0.85rem;
-    font-style: italic;
-  }
-  .map-vocab-item strong {
-    font-style: normal;
-    color: var(--sky);
-    font-family: 'DM Mono', monospace;
-    font-size: 0.8rem;
-  }
-
-  /* GAMES SECTION */
-  .game-card {
-    background: var(--forest);
-    color: var(--cream);
-    padding: 1.6rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .game-card::before {
-    content: '🎮';
-    position: absolute;
-    font-size: 5rem;
-    right: 10px;
-    top: 10px;
-    opacity: 0.12;
-  }
-  .game-headline {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 0.6rem;
-    line-height: 1.2;
-  }
-  .game-body {
-    font-size: 0.95rem;
-    line-height: 1.75;
-    opacity: 0.9;
-    margin-bottom: 1rem;
-  }
-  .phrase-box {
-    background: rgba(245,237,216,0.1);
-    border: 1px solid rgba(245,237,216,0.25);
-    padding: 0.8rem 1rem;
-  }
-  .phrase-box-title {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    opacity: 0.6;
-    margin-bottom: 0.5rem;
-  }
-  .phrase-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    font-size: 0.9rem;
-    padding: 0.25rem 0;
-    border-bottom: 1px solid rgba(245,237,216,0.1);
-  }
-  .phrase-row:last-child { border-bottom: none; }
-  .phrase-es { font-style: italic; color: #a8e6a3; }
-  .phrase-en { font-family: 'DM Mono', monospace; font-size: 0.75rem; opacity: 0.6; }
-
-  /* QUIZ */
-  .quiz-section {
-    background: var(--gold);
-    padding: 1.5rem;
-  }
-  .quiz-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 1rem;
-  }
-  .quiz-q {
-    font-size: 1rem;
-    color: var(--ink);
-    margin-bottom: 1rem;
-    line-height: 1.5;
-  }
-  .quiz-options {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
-  }
-  .quiz-option {
-    background: rgba(26,18,6,0.1);
-    border: 2px solid rgba(26,18,6,0.2);
-    padding: 0.7rem 0.8rem;
-    cursor: pointer;
-    font-size: 0.88rem;
-    font-family: 'Fraunces', serif;
-    color: var(--ink);
-    text-align: left;
-    transition: all 0.15s ease;
-    position: relative;
-  }
-  .quiz-option:hover { background: rgba(26,18,6,0.18); border-color: var(--ink); }
-  .quiz-option.correct { background: var(--forest); color: var(--cream); border-color: var(--forest); }
-  .quiz-option.wrong { background: var(--rust); color: var(--cream); border-color: var(--rust); }
-  .quiz-option.revealed { pointer-events: none; }
-  .quiz-feedback {
-    margin-top: 0.8rem;
-    font-size: 0.9rem;
-    font-style: italic;
-    color: var(--ink);
-    min-height: 1.4em;
-    line-height: 1.5;
-  }
-
-  /* FOOTER */
-  .footer {
-    padding-top: 1.5rem;
-    text-align: center;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--muted);
-    border-top: 2px solid var(--ink);
+    max-width: 340px;
+    line-height: 1.8;
   }
-  .footer-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 800;
+  .gate-sub a { color: var(--sky); }
+  .key-row {
+    display: flex;
+    gap: 0;
+    width: 100%;
+    max-width: 420px;
+  }
+  .key-input {
+    flex: 1;
+    background: var(--cream);
+    border: 2px solid var(--ink);
+    border-right: none;
+    padding: 0.7rem 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
     color: var(--ink);
-    letter-spacing: -0.02em;
-    margin-bottom: 0.3rem;
+    outline: none;
   }
-
-  /* PROGRESS BAR */
-  .progress-strip {
+  .key-input::placeholder { color: var(--muted); opacity: 0.7; }
+  .key-btn {
     background: var(--ink);
     color: var(--cream);
-    padding: 0.6rem 1.2rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+    border: 2px solid var(--ink);
+    padding: 0.7rem 1.2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+  .key-btn:hover { background: var(--rust); border-color: var(--rust); }
+  .gate-note {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    max-width: 380px;
+    line-height: 1.7;
+  }
+  .gate-error {
+    color: var(--rust);
     font-family: 'DM Mono', monospace;
     font-size: 0.65rem;
     letter-spacing: 0.1em;
+    min-height: 1.2em;
   }
-  .progress-label { opacity: 0.6; white-space: nowrap; }
-  .progress-bar-bg {
-    flex: 1;
-    height: 4px;
-    background: rgba(245,237,216,0.2);
+
+  /* ── LOADING ── */
+  #loading {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 55vh;
+    gap: 1rem;
+    text-align: center;
+  }
+  .loading-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 800;
+  }
+  .loading-logo span { color: var(--rust); }
+  .loading-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .bar-bg {
+    width: 200px;
+    height: 3px;
+    background: rgba(26,18,6,0.15);
     border-radius: 2px;
     overflow: hidden;
   }
-  .progress-bar-fill {
+  .bar-fill {
     height: 100%;
-    width: 34%;
     background: var(--gold);
     border-radius: 2px;
-    animation: fill 1s ease 0.5s both;
-    transform-origin: left;
+    width: 0%;
+    transition: width 0.5s ease;
   }
-  @keyframes fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-  .progress-count { color: var(--gold); white-space: nowrap; }
-
-  .streak-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    background: var(--rust);
-    color: var(--cream);
+  .loading-msg {
     font-family: 'DM Mono', monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.1em;
-    padding: 0.25rem 0.6rem;
-    margin-left: auto;
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    min-height: 1.2em;
   }
+
+  /* ── CONTENT ── */
+  #content { display: none; animation: fadeUp 0.5s ease both; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .section {
+    border-bottom: 1px solid rgba(26,18,6,0.2);
+    padding: 2rem 0;
+  }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.57rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: rgba(26,18,6,0.18); }
+
+  /* WORD */
+  .wod-card { background: var(--ink); color: var(--cream); padding: 2rem; position: relative; overflow: hidden; }
+  .wod-card::before { content: '🌿'; position: absolute; font-size: 6rem; right: -10px; top: -14px; opacity: 0.1; transform: rotate(15deg); }
+  .wod-word { font-family: 'Syne', sans-serif; font-size: clamp(2.2rem, 7vw, 3.6rem); font-weight: 800; color: var(--gold); line-height: 1; margin-bottom: 0.25rem; }
+  .wod-pron { font-family: 'DM Mono', monospace; font-size: 0.74rem; color: rgba(245,237,216,0.45); margin-bottom: 0.8rem; }
+  .wod-pos { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.57rem; letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid var(--gold); color: var(--gold); padding: 0.18rem 0.45rem; margin-bottom: 0.8rem; }
+  .wod-def { font-size: 0.97rem; line-height: 1.65; margin-bottom: 0.9rem; }
+  .wod-ex { border-left: 3px solid var(--rust); padding-left: 0.9rem; font-style: italic; font-size: 0.9rem; color: rgba(245,237,216,0.82); line-height: 1.6; }
+  .wod-tr { margin-top: 0.3rem; font-family: 'DM Mono', monospace; font-size: 0.7rem; color: rgba(245,237,216,0.4); }
+
+  /* GRAMMAR */
+  .grammar-box { background: var(--cream); border: 2px solid var(--ink); padding: 1.3rem 1.5rem; }
+  .grammar-title { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.45rem; }
+  .grammar-rule { font-size: 0.9rem; line-height: 1.75; color: #3a2e1e; }
+  .grammar-rule code { font-family: 'DM Mono', monospace; font-size: 0.8rem; background: rgba(200,145,42,0.18); padding: 0.1rem 0.3rem; color: var(--rust); }
+  .example-grid { margin-top: 0.9rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.35rem 1rem; font-size: 0.85rem; }
+  @media(max-width:480px){ .example-grid { grid-template-columns: 1fr; } }
+  .es-ex { font-style: italic; color: var(--forest); font-weight: bold; }
+  .en-ex { color: var(--muted); }
+
+  /* MUSIC */
+  .music-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 1.3rem; align-items: start; }
+  @media(max-width:520px){ .music-grid { grid-template-columns: 1fr; } }
+  .music-hed { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; line-height: 1.2; margin-bottom: 0.45rem; }
+  .music-body { font-size: 0.9rem; line-height: 1.75; color: #3a2e1e; margin-bottom: 0.75rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.4rem; }
+  .chip { background: var(--forest); color: var(--cream); font-family: 'DM Mono', monospace; font-size: 0.6rem; padding: 0.18rem 0.45rem; letter-spacing: 0.07em; }
+  .music-sidebar { background: var(--rust); color: var(--cream); padding: 1.1rem; }
+  .sidebar-lbl { font-family: 'DM Mono', monospace; font-size: 0.57rem; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.65; margin-bottom: 0.55rem; }
+  .s-name { font-family: 'Syne', sans-serif; font-size: 0.92rem; font-weight: 700; }
+  .s-blurb { font-size: 0.78rem; line-height: 1.5; opacity: 0.88; margin-top: 0.14rem; margin-bottom: 0.7rem; }
+  .s-blurb:last-child { margin-bottom: 0; }
+  .sdiv { border: none; border-top: 1px solid rgba(245,237,216,0.22); margin: 0.6rem 0; }
+
+  /* SCIENCE */
+  .map-card { border: 2px solid var(--sky); padding: 1.4rem; position: relative; overflow: hidden; }
+  .map-card::after { content: '🗺️'; position: absolute; font-size: 4.5rem; right: -4px; bottom: -8px; opacity: 0.08; transform: rotate(-10deg); }
+  .map-hed { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--sky); margin-bottom: 0.45rem; line-height: 1.2; }
+  .map-body { font-size: 0.9rem; line-height: 1.75; color: #3a2e1e; }
+  .map-vocab-box { margin-top: 0.9rem; background: rgba(43,108,176,0.07); padding: 0.75rem 1rem; border-left: 3px solid var(--sky); }
+  .map-vocab-title { font-family: 'DM Mono', monospace; font-size: 0.57rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sky); margin-bottom: 0.4rem; }
+  .map-vocab-list { display: flex; flex-wrap: wrap; gap: 0.3rem; font-size: 0.83rem; }
+  .map-vocab-list strong { font-style: normal; color: var(--sky); font-family: 'DM Mono', monospace; font-size: 0.77rem; }
+
+  /* GAMES */
+  .game-card { background: var(--forest); color: var(--cream); padding: 1.5rem; position: relative; overflow: hidden; }
+  .game-card::before { content: '🎮'; position: absolute; font-size: 4.5rem; right: 10px; top: 10px; opacity: 0.1; }
+  .game-hed { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.2; }
+  .game-body { font-size: 0.9rem; line-height: 1.75; opacity: 0.9; margin-bottom: 0.9rem; }
+  .phrase-box { background: rgba(245,237,216,0.09); border: 1px solid rgba(245,237,216,0.18); padding: 0.75rem 1rem; }
+  .phrase-box-title { font-family: 'DM Mono', monospace; font-size: 0.56rem; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.55; margin-bottom: 0.45rem; }
+  .phrase-row { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.87rem; padding: 0.2rem 0; border-bottom: 1px solid rgba(245,237,216,0.08); }
+  .phrase-row:last-child { border-bottom: none; }
+  .phrase-es { font-style: italic; color: #a8e6a3; }
+  .phrase-en { font-family: 'DM Mono', monospace; font-size: 0.7rem; opacity: 0.55; }
+
+  /* QUIZ */
+  .quiz-wrap { background: var(--gold); padding: 1.4rem; }
+  .quiz-title { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.85rem; }
+  .quiz-q { font-size: 0.93rem; color: var(--ink); margin-bottom: 0.85rem; line-height: 1.55; }
+  .quiz-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 0.45rem; }
+  @media(max-width:400px){ .quiz-opts { grid-template-columns: 1fr; } }
+  .quiz-btn { background: rgba(26,18,6,0.1); border: 2px solid rgba(26,18,6,0.2); padding: 0.65rem 0.75rem; cursor: pointer; font-size: 0.84rem; font-family: 'Fraunces', serif; color: var(--ink); text-align: left; transition: all 0.15s; }
+  .quiz-btn:hover:not([disabled]) { background: rgba(26,18,6,0.18); border-color: var(--ink); }
+  .quiz-btn.correct { background: var(--forest); color: var(--cream); border-color: var(--forest); cursor: default; }
+  .quiz-btn.wrong { background: var(--rust); color: var(--cream); border-color: var(--rust); cursor: default; }
+  .quiz-fb { margin-top: 0.75rem; font-size: 0.88rem; font-style: italic; color: var(--ink); min-height: 1.2em; line-height: 1.55; }
+
+  /* TEASER */
+  .teaser { padding: 1rem 0 0.5rem; font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; }
+
+  /* GENERATE BAR */
+  .gen-bar {
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.6rem 1rem;
+    flex-wrap: wrap;
+  }
+  .gen-info { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  .gen-btn {
+    background: var(--ink);
+    color: var(--cream);
+    border: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.63rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 0.65rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+  .gen-btn:hover { background: var(--rust); }
+  .gen-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* FOOTER */
+  .footer { padding-top: 1.3rem; text-align: center; font-family: 'DM Mono', monospace; font-size: 0.57rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); }
+  .footer-title { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; margin-bottom: 0.25rem; }
 </style>
 </head>
 <body>
-<div class="page">
 
-  <!-- MASTHEAD -->
-  <header class="masthead">
-    <div class="masthead-eyebrow">Your Daily Spanish Dispatch</div>
-    <h1>El <span>Diario</span></h1>
-    <div class="masthead-sub">
-      <span>Sunday, 22 March 2026</span>
-      <span class="sep">◆</span>
-      <span>Issue No. 001</span>
-      <span class="sep">◆</span>
-      <span>Beginner–Intermediate</span>
-    </div>
-  </header>
-
-  <!-- NAV RIBBON -->
-  <nav class="nav-ribbon">
-    <div class="nav-item active">📖 Palabra del Día</div>
-    <div class="nav-item">🌿 Naturaleza</div>
-    <div class="nav-item">🎵 Música Latina</div>
-    <div class="nav-item">🗺️ Ciencia & Mapas</div>
-    <div class="nav-item">🎮 Videojuegos</div>
-    <div class="nav-item">✏️ Quiz</div>
-  </nav>
-
-  <!-- PROGRESS STRIP -->
-  <div class="progress-strip">
-    <span class="progress-label">Weekly streak</span>
-    <div class="progress-bar-bg"><div class="progress-bar-fill"></div></div>
-    <span class="progress-count">3 / 7 days</span>
-    <span class="streak-badge">🔥 3 streak</span>
+<!-- MASTHEAD (always visible) -->
+<header class="masthead">
+  <div class="masthead-eyebrow">Your Daily Spanish Dispatch</div>
+  <h1>El <span>Diario</span></h1>
+  <div class="masthead-sub">
+    <span id="hdr-date">—</span>
+    <span class="sep">◆</span>
+    <span id="hdr-issue">Issue No. —</span>
+    <span class="sep">◆</span>
+    <span>Beginner–Intermediate</span>
   </div>
+</header>
 
-  <!-- WORD OF THE DAY -->
-  <section class="section">
-    <div class="section-label">
-      <span class="section-icon" style="background:var(--ink);color:var(--gold);">📖</span>
-      Palabra del Día
-    </div>
-    <div class="wod-card">
-      <div class="wod-pronunciation">/ el bos·ke /</div>
-      <div class="wod-word">el bosque</div>
-      <div class="wod-pos">noun, masculine</div>
-      <div class="wod-definition">
-        <strong>The forest</strong> — a dense area of trees covering a large area of land. Spanish-speaking countries contain some of the world's most biodiverse forests, from the cloud forests of Colombia to the ancient Valdivian temperate rainforest of southern Chile.
-      </div>
-      <div class="wod-example">
-        <em>El bosque tropical alberga miles de especies.</em>
-        <div class="wod-translation">→ "The tropical forest houses thousands of species."</div>
-      </div>
-    </div>
-  </section>
+<nav class="nav-ribbon">
+  <div class="nav-item">📖 Palabra del Día</div>
+  <div class="nav-item">✍️ Gramática</div>
+  <div class="nav-item">🎵 Música Latina</div>
+  <div class="nav-item">🗺️ Ciencia & Mapas</div>
+  <div class="nav-item">🎮 Videojuegos</div>
+  <div class="nav-item">✏️ Quiz</div>
+</nav>
 
-  <!-- GRAMMAR TIP -->
-  <section class="section">
-    <div class="section-label">
-      <span class="section-icon" style="background:var(--gold);color:var(--ink);">✍️</span>
-      Gramática Rápida — Gender & Articles
-    </div>
-    <div class="grammar-box">
-      <div class="grammar-title">Why <em>el</em> bosque and not <em>la</em> bosque?</div>
-      <div class="grammar-rule">
-        In Spanish, every noun has a gender — masculine or feminine. Nature words are a great place to practice this:
-        masculine nouns take <code>el</code> (singular) or <code>los</code> (plural),
-        feminine nouns take <code>la</code> (singular) or <code>las</code> (plural).
-        Words ending in <code>-o</code> are usually masculine; words ending in <code>-a</code> usually feminine — but there are always exceptions!
-      </div>
-      <div class="grammar-examples">
-        <div class="grammar-pair">
-          <span class="grammar-es">el bosque 🌲</span><span class="grammar-en">the forest (masc.)</span>
-          <span class="grammar-es">la selva 🌿</span><span class="grammar-en">the jungle (fem.)</span>
-          <span class="grammar-es">el río 🌊</span><span class="grammar-en">the river (masc.)</span>
-          <span class="grammar-es">la montaña ⛰️</span><span class="grammar-en">the mountain (fem.)</span>
-          <span class="grammar-es">el árbol 🌳</span><span class="grammar-en">the tree (masc.)</span>
-          <span class="grammar-es">la flor 🌸</span><span class="grammar-en">the flower (fem.)</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LATIN POP -->
-  <section class="section">
-    <div class="section-label">
-      <span class="section-icon" style="background:var(--rust);color:var(--cream);">🎵</span>
-      Música Latina — Learn Through Lyrics & Culture
-    </div>
-    <div class="music-feature">
-      <div>
-        <div class="music-headline">Bad Bunny hace historia en los Grammys 🏆</div>
-        <div class="music-body">
-          In February 2026, Puerto Rican superstar Bad Bunny became the first Spanish-language artist to win the Grammy Award for Album of the Year — a historic milestone for Latin music globally. His album <em>Debí Tirar Más Fotos</em> also won Best Música Urbana Album at the 68th Grammy Awards.
-        </div>
-        <div class="music-body">
-          The album title is a phrase worth learning: <em>debí tirar más fotos</em> means <strong>"I should have taken more photos."</strong> It's a melancholic reflection on cherishing memories — perfect for practicing the past imperfect subjunctive later on!
-        </div>
-        <div>
-          <span class="vocab-chip">debí = I should have</span>
-          <span class="vocab-chip">tirar fotos = take photos</span>
-          <span class="vocab-chip">más = more</span>
-          <span class="vocab-chip">álbum = album</span>
-          <span class="vocab-chip">premiación = award ceremony</span>
-        </div>
-      </div>
-      <div>
-        <div class="music-sidebar">
-          <div class="sidebar-title">Also Buzzing This Month</div>
-          <div class="sidebar-artist">Rosalía</div>
-          <div class="sidebar-blurb">The Spanish pop innovator kicks off her global <em>Lux</em> tour in March — an orchestra-heavy concept show. Her lyrics blend Catalan, Spanish, and invented slang: great for ear training!</div>
-          <hr class="sidebar-divider">
-          <div class="sidebar-artist">Juanes (Colombia)</div>
-          <div class="sidebar-blurb">The rock-pop legend drops a new album this month. His songs have long been a favorite teaching tool — clear diction, emotional depth, and rich Colombian vocabulary.</div>
-          <hr class="sidebar-divider">
-          <div class="sidebar-artist">Blessd (Colombia)</div>
-          <div class="sidebar-blurb">BMI Latin Spotlight artist bringing fresh Latin urban sounds. Great for learning contemporary Colombian slang.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SCIENCE & MAPS -->
-  <section class="section">
-    <div class="section-label">
-      <span class="section-icon" style="background:var(--sky);color:var(--cream);">🗺️</span>
-      Ciencia & Geografía
-    </div>
-    <div class="map-card">
-      <div class="map-headline">El Bosque Lluvioso Valdiviano — El tesoro escondido de Sudamérica</div>
-      <div class="map-body">
-        Chile and Argentina are home to the <strong>Valdivian temperate rainforest</strong> (<em>el bosque lluvioso valdiviano</em>), one of only five temperate rainforests on Earth. It covers roughly 248,100 km² and is home to the world's smallest deer, the <em>pudú</em>, and ancient <em>alerce</em> trees that can live for over 3,000 years — making them some of the oldest living organisms on the planet.
-      </div>
-      <div class="map-body">
-        In Spanish-speaking geography, forests cover around 22% of Latin America — described as the <em>pulmón del mundo</em> ("the lungs of the world"). Protecting them is called <em>conservación de la biodiversidad</em>.
-      </div>
-      <div class="map-vocab">
-        <div class="map-vocab-title">🌿 Nature + Science Vocabulary</div>
-        <div class="map-vocab-list">
-          <span class="map-vocab-item"><strong>el bosque lluvioso</strong> — rainforest</span> &nbsp;·&nbsp;
-          <span class="map-vocab-item"><strong>la biodiversidad</strong> — biodiversity</span> &nbsp;·&nbsp;
-          <span class="map-vocab-item"><strong>la especie</strong> — species</span> &nbsp;·&nbsp;
-          <span class="map-vocab-item"><strong>el medio ambiente</strong> — environment</span> &nbsp;·&nbsp;
-          <span class="map-vocab-item"><strong>la conservación</strong> — conservation</span> &nbsp;·&nbsp;
-          <span class="map-vocab-item"><strong>el cambio climático</strong> — climate change</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- VIDEO GAMES -->
-  <section class="section">
-    <div class="section-label">
-      <span class="section-icon" style="background:var(--forest);color:var(--cream);">🎮</span>
-      Videojuegos en Español
-    </div>
-    <div class="game-card">
-      <div class="game-headline">Cambia el idioma a español 🕹️</div>
-      <div class="game-body">
-        One of the best immersion hacks: change your game's language to Spanish! Whether it's <em>The Legend of Zelda</em>, a FIFA match, or any RPG, the in-game dialogue and menus become a free Spanish lesson. Spanish game localization is especially rich — Latin American Spanish is used for many titles, exposing you to natural, contemporary vocabulary.
-      </div>
-      <div class="game-body">
-        Today's gaming phrases to practice — perfect for co-op games, speedruns, or just chatting with Spanish-speaking teammates online:
-      </div>
-      <div class="phrase-box">
-        <div class="phrase-box-title">Frases para el juego</div>
-        <div class="phrase-row">
-          <span class="phrase-es">¡Cuidado, hay un enemigo!</span>
-          <span class="phrase-en">Careful, there's an enemy!</span>
-        </div>
-        <div class="phrase-row">
-          <span class="phrase-es">¿Dónde está el jefe final?</span>
-          <span class="phrase-en">Where is the final boss?</span>
-        </div>
-        <div class="phrase-row">
-          <span class="phrase-es">Necesito más vida.</span>
-          <span class="phrase-en">I need more health.</span>
-        </div>
-        <div class="phrase-row">
-          <span class="phrase-es">¡Ganamos el nivel!</span>
-          <span class="phrase-en">We cleared the level!</span>
-        </div>
-        <div class="phrase-row">
-          <span class="phrase-es">Voy a guardar la partida.</span>
-          <span class="phrase-en">I'm going to save the game.</span>
-        </div>
-        <div class="phrase-row">
-          <span class="phrase-es">¡Empecemos de nuevo!</span>
-          <span class="phrase-en">Let's start over!</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- QUIZ -->
-  <section class="section" style="border-bottom:none;">
-    <div class="section-label">
-      <span class="section-icon" style="background:var(--gold);color:var(--ink);">✏️</span>
-      Mini Quiz — ¡A Practicar!
-    </div>
-    <div class="quiz-section">
-      <div class="quiz-title">¿Cuánto aprendiste hoy?</div>
-      <div class="quiz-q" id="quiz-question">
-        Bad Bunny's historic Grammy-winning album title <em>"Debí Tirar Más Fotos"</em> translates to:
-      </div>
-      <div class="quiz-options" id="quiz-options">
-        <button class="quiz-option" onclick="answer(this, false)">A. "I should have danced more"</button>
-        <button class="quiz-option" onclick="answer(this, true)">B. "I should have taken more photos"</button>
-        <button class="quiz-option" onclick="answer(this, false)">C. "I should have said more words"</button>
-        <button class="quiz-option" onclick="answer(this, false)">D. "I should have stayed longer"</button>
-      </div>
-      <div class="quiz-feedback" id="quiz-feedback"></div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer" style="margin-top:2rem;">
-    <div class="footer-title">El Diario</div>
-    <p>Your daily Spanish companion · Issue 001 · March 22, 2026</p>
-    <p style="margin-top:0.4rem;">Tomorrow: <em>la mariposa</em> (butterfly) · Reggaeton slang · Amazon river geography · RPG vocabulary</p>
-  </footer>
-
+<!-- GENERATE BAR -->
+<div class="gen-bar">
+  <span class="gen-info" id="gen-info">Enter your API key to begin</span>
+  <button class="gen-btn" id="gen-btn" onclick="handleGenerate()">↻ Generate Today's Edition</button>
 </div>
 
+<div class="page">
+
+  <!-- API KEY GATE -->
+  <div id="gate">
+    <div class="gate-title">Buenos días. ☀️</div>
+    <div class="gate-sub">
+      Paste your Anthropic API key to generate today's fresh edition.<br>
+      Your key stays in your browser — never sent anywhere but Anthropic.
+    </div>
+    <div class="key-row">
+      <input class="key-input" id="api-key" type="password" placeholder="sk-ant-api03-..." autocomplete="off" onkeydown="if(event.key==='Enter')handleGenerate()" />
+      <button class="key-btn" onclick="handleGenerate()">Generate →</button>
+    </div>
+    <div class="gate-note">
+      Get a free key at <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a><br>
+      Your key is saved locally so you only need to enter it once.
+    </div>
+    <div class="gate-error" id="gate-error"></div>
+  </div>
+
+  <!-- LOADING -->
+  <div id="loading">
+    <div class="loading-logo">El <span>Diario</span></div>
+    <div class="loading-label">Generating today's edition</div>
+    <div class="bar-bg"><div class="bar-fill" id="bar"></div></div>
+    <div class="loading-msg" id="loading-msg">Connecting…</div>
+  </div>
+
+  <!-- NEWSLETTER CONTENT -->
+  <div id="content"></div>
+
+</div><!-- /.page -->
+
 <script>
-function answer(btn, isCorrect) {
-  const options = document.querySelectorAll('.quiz-option');
-  const feedback = document.getElementById('quiz-feedback');
-  options.forEach(o => {
-    o.classList.add('revealed');
-    const wasRight = o === btn ? isCorrect : false;
-    const isTheRight = o.getAttribute('onclick').includes('true');
-    if (isTheRight) o.classList.add('correct');
-  });
-  if (!isCorrect) btn.classList.add('wrong');
-  feedback.textContent = isCorrect
-    ? '✅ ¡Correcto! "Debí" comes from the verb "deber" — to owe/should. "Tirar fotos" is an informal way to say "take photos." A beautiful phrase!'
-    : '❌ ¡Casi! "Tirar fotos" = to take photos. "Debí" = I should have. Try to remember it next time!';
+const MSGS = [
+  'Waking up the editor…',
+  'Brewing today\'s word…',
+  'Tuning into Latin radio…',
+  'Charting the science section…',
+  'Loading up the controller…',
+  'Laying out the edition…',
+];
+
+let issueCount = parseInt(localStorage.getItem('eldiario_issue') || '0');
+let quizAnswered = false;
+let quizCorrect = -1;
+let quizFeedbackGood = '';
+let quizFeedbackBad = '';
+
+function todayStr() {
+  return new Date().toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
 }
+
+function getKey() {
+  const inputKey = document.getElementById('api-key').value.trim();
+  if (inputKey) { localStorage.setItem('eldiario_key', inputKey); return inputKey; }
+  return localStorage.getItem('eldiario_key') || '';
+}
+
+// On load: if key already saved, skip gate and auto-generate
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('hdr-date').textContent = todayStr();
+  document.getElementById('hdr-issue').textContent = `Issue No. ${String(issueCount + 1).padStart(3,'0')}`;
+  const saved = localStorage.getItem('eldiario_key');
+  if (saved) {
+    document.getElementById('gate').style.display = 'none';
+    generate(saved);
+  }
+});
+
+function handleGenerate() {
+  const key = getKey();
+  if (!key) { document.getElementById('gate-error').textContent = 'Please enter your API key first.'; return; }
+  document.getElementById('gate-error').textContent = '';
+  document.getElementById('gate').style.display = 'none';
+  document.getElementById('content').style.display = 'none';
+  generate(key);
+}
+
+async function generate(key) {
+  quizAnswered = false;
+  document.getElementById('loading').style.display = 'flex';
+  document.getElementById('bar').style.width = '0%';
+  document.getElementById('gen-btn').disabled = true;
+  document.getElementById('gen-info').textContent = 'Generating…';
+
+  let pct = 0;
+  let msgIdx = 0;
+  document.getElementById('loading-msg').textContent = MSGS[0];
+  const ticker = setInterval(() => {
+    pct = Math.min(pct + 13, 88);
+    document.getElementById('bar').style.width = pct + '%';
+    msgIdx = (msgIdx + 1) % MSGS.length;
+    document.getElementById('loading-msg').textContent = MSGS[msgIdx];
+  }, 900);
+
+  const today = todayStr();
+  const prompt = `You are the editor of "El Diario," a daily Spanish learning newsletter for someone who loves nature, Latin pop culture, science/maps, and video games. Today is ${today}.
+
+Generate a COMPLETE newsletter. Return ONLY valid JSON — no markdown fences, no preamble, no explanation. Schema:
+{
+  "word": {
+    "spanish": "one Spanish word related to nature",
+    "pronunciation": "/ phonetic /",
+    "partOfSpeech": "e.g. noun, feminine",
+    "englishMeaning": "English word",
+    "definition": "2-sentence definition connecting to Latin American nature or culture",
+    "exampleSpanish": "natural example sentence",
+    "exampleEnglish": "English translation"
+  },
+  "grammar": {
+    "title": "Short catchy grammar tip title",
+    "rule": "2-3 sentence explanation. Wrap Spanish forms in backticks.",
+    "examples": [
+      {"es": "Spanish sentence 🌿", "en": "translation"},
+      {"es": "...", "en": "..."},
+      {"es": "...", "en": "..."},
+      {"es": "...", "en": "..."}
+    ]
+  },
+  "music": {
+    "headline": "Latin music news headline with emoji",
+    "body1": "First paragraph with Spanish vocabulary woven in",
+    "body2": "Second paragraph on vocabulary angle",
+    "chips": ["word = meaning", "word = meaning", "word = meaning", "word = meaning"],
+    "spotlights": [
+      {"artist": "Name", "blurb": "2 sentences"},
+      {"artist": "Name", "blurb": "2 sentences"},
+      {"artist": "Name", "blurb": "2 sentences"}
+    ]
+  },
+  "science": {
+    "headline": "Science/geography headline about Latin America with emoji",
+    "body1": "First paragraph",
+    "body2": "Second paragraph connecting to Spanish language",
+    "vocabItems": [
+      {"word": "Spanish term", "meaning": "English"},
+      {"word": "...", "meaning": "..."},
+      {"word": "...", "meaning": "..."},
+      {"word": "...", "meaning": "..."},
+      {"word": "...", "meaning": "..."}
+    ]
+  },
+  "games": {
+    "headline": "Gaming headline or tip with emoji",
+    "body1": "Fun paragraph about learning Spanish through gaming",
+    "body2": "Setup for phrase list",
+    "phrases": [
+      {"es": "Spanish phrase", "en": "translation"},
+      {"es": "...", "en": "..."},
+      {"es": "...", "en": "..."},
+      {"es": "...", "en": "..."},
+      {"es": "...", "en": "..."},
+      {"es": "...", "en": "..."}
+    ]
+  },
+  "quiz": {
+    "question": "Quiz question about something from today",
+    "options": ["Option A", "Option B", "Option C", "Option D"],
+    "correctIndex": 1,
+    "feedbackCorrect": "Encouraging 1-2 sentence explanation",
+    "feedbackWrong": "Gentle 1-2 sentence correction with answer"
+  },
+  "tomorrowTeaser": "Tomorrow: la X · Artist · Geography · Game vocab"
+}`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-api-key': key, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+      body: JSON.stringify({
+        model: 'claude-opus-4-6',
+        max_tokens: 2000,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error?.message || `HTTP ${res.status}`);
+    }
+
+    const raw = await res.json();
+    const text = raw.content.map(b => b.text || '').join('');
+    const clean = text.replace(/```json|```/g, '').trim();
+    const d = JSON.parse(clean);
+
+    clearInterval(ticker);
+    document.getElementById('bar').style.width = '100%';
+    await sleep(300);
+
+    issueCount++;
+    localStorage.setItem('eldiario_issue', issueCount);
+    document.getElementById('hdr-date').textContent = todayStr();
+    document.getElementById('hdr-issue').textContent = `Issue No. ${String(issueCount).padStart(3,'0')}`;
+    document.getElementById('gen-info').textContent = `Last generated: ${new Date().toLocaleTimeString()}`;
+    document.getElementById('gen-btn').disabled = false;
+
+    render(d);
+
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+
+  } catch(e) {
+    clearInterval(ticker);
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('gen-btn').disabled = false;
+    document.getElementById('gen-info').textContent = 'Error — try again';
+
+    // Show error in gate or inline
+    if (e.message.includes('auth') || e.message.includes('API key') || e.message.includes('401')) {
+      localStorage.removeItem('eldiario_key');
+      document.getElementById('gate-error').textContent = '⚠ Invalid API key. Please check and try again.';
+      document.getElementById('gate').style.display = 'flex';
+    } else {
+      document.getElementById('content').innerHTML = `
+        <div style="background:var(--rust);color:var(--cream);padding:1.5rem;margin-top:2rem;font-size:0.9rem;line-height:1.6;text-align:center">
+          <strong style="font-family:'Syne',sans-serif;font-size:1.1rem;display:block;margin-bottom:0.4rem">Couldn't generate edition</strong>
+          ${e.message}<br><br>
+          <span style="font-size:0.78rem;opacity:0.8">Press the generate button to try again.</span>
+        </div>`;
+      document.getElementById('content').style.display = 'block';
+    }
+  }
+}
+
+function render(d) {
+  quizCorrect = d.quiz.correctIndex;
+  quizFeedbackGood = d.quiz.feedbackCorrect;
+  quizFeedbackBad = d.quiz.feedbackWrong;
+
+  const exRows = d.grammar.examples.map(ex =>
+    `<span class="es-ex">${esc(ex.es)}</span><span class="en-ex">${esc(ex.en)}</span>`
+  ).join('');
+
+  const chips = d.music.chips.map(c => `<span class="chip">${esc(c)}</span>`).join('');
+
+  const spots = d.music.spotlights.map((s, i) => `
+    ${i > 0 ? '<hr class="sdiv">' : ''}
+    <div class="s-name">${esc(s.artist)}</div>
+    <div class="s-blurb">${esc(s.blurb)}</div>
+  `).join('');
+
+  const sciVocab = d.science.vocabItems.map((v, i) =>
+    `<span><strong>${esc(v.word)}</strong> — ${esc(v.meaning)}</span>${i < d.science.vocabItems.length - 1 ? ' &nbsp;·&nbsp; ' : ''}`
+  ).join('');
+
+  const phrases = d.games.phrases.map(p => `
+    <div class="phrase-row">
+      <span class="phrase-es">${esc(p.es)}</span>
+      <span class="phrase-en">${esc(p.en)}</span>
+    </div>`).join('');
+
+  const quizOpts = d.quiz.options.map((opt, i) =>
+    `<button class="quiz-btn" onclick="checkAnswer(this,${i})">${esc(opt)}</button>`
+  ).join('');
+
+  const grammarRule = esc(d.grammar.rule).replace(/`([^`]+)`/g, '<code>$1</code>');
+
+  document.getElementById('content').innerHTML = `
+
+    <!-- WORD -->
+    <div class="section">
+      <div class="section-label"><span>📖</span> Palabra del Día</div>
+      <div class="wod-card">
+        <div class="wod-pron">${esc(d.word.pronunciation)}</div>
+        <div class="wod-word">${esc(d.word.spanish)}</div>
+        <div class="wod-pos">${esc(d.word.partOfSpeech)}</div>
+        <div class="wod-def"><strong>${esc(d.word.englishMeaning)}</strong> — ${esc(d.word.definition)}</div>
+        <div class="wod-ex">
+          <em>${esc(d.word.exampleSpanish)}</em>
+          <div class="wod-tr">→ "${esc(d.word.exampleEnglish)}"</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GRAMMAR -->
+    <div class="section">
+      <div class="section-label"><span>✍️</span> Gramática Rápida</div>
+      <div class="grammar-box">
+        <div class="grammar-title">${esc(d.grammar.title)}</div>
+        <div class="grammar-rule">${grammarRule}</div>
+        <div class="example-grid">${exRows}</div>
+      </div>
+    </div>
+
+    <!-- MUSIC -->
+    <div class="section">
+      <div class="section-label"><span>🎵</span> Música Latina</div>
+      <div class="music-grid">
+        <div>
+          <div class="music-hed">${esc(d.music.headline)}</div>
+          <div class="music-body">${esc(d.music.body1)}</div>
+          <div class="music-body">${esc(d.music.body2)}</div>
+          <div class="chips">${chips}</div>
+        </div>
+        <div class="music-sidebar">
+          <div class="sidebar-lbl">Also Buzzing</div>
+          ${spots}
+        </div>
+      </div>
+    </div>
+
+    <!-- SCIENCE -->
+    <div class="section">
+      <div class="section-label"><span>🗺️</span> Ciencia & Geografía</div>
+      <div class="map-card">
+        <div class="map-hed">${esc(d.science.headline)}</div>
+        <div class="map-body">${esc(d.science.body1)}</div>
+        <div class="map-body" style="margin-top:0.8rem">${esc(d.science.body2)}</div>
+        <div class="map-vocab-box">
+          <div class="map-vocab-title">🌿 Vocabulary</div>
+          <div class="map-vocab-list">${sciVocab}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GAMES -->
+    <div class="section">
+      <div class="section-label"><span>🎮</span> Videojuegos en Español</div>
+      <div class="game-card">
+        <div class="game-hed">${esc(d.games.headline)}</div>
+        <div class="game-body">${esc(d.games.body1)}</div>
+        <div class="game-body">${esc(d.games.body2)}</div>
+        <div class="phrase-box">
+          <div class="phrase-box-title">Frases para el juego</div>
+          ${phrases}
+        </div>
+      </div>
+    </div>
+
+    <!-- QUIZ -->
+    <div class="section" style="border-bottom:none">
+      <div class="section-label"><span>✏️</span> Mini Quiz — ¡A Practicar!</div>
+      <div class="quiz-wrap">
+        <div class="quiz-title">¿Cuánto aprendiste hoy?</div>
+        <div class="quiz-q">${esc(d.quiz.question)}</div>
+        <div class="quiz-opts" id="qopts">${quizOpts}</div>
+        <div class="quiz-fb" id="qfb"></div>
+      </div>
+    </div>
+
+    <div class="teaser">${esc(d.tomorrowTeaser)}</div>
+
+    <footer class="footer" style="margin-top:1.5rem">
+      <div class="footer-title">El Diario</div>
+      <p>Daily Spanish companion · Issue ${String(issueCount).padStart(3,'0')} · ${todayStr()}</p>
+    </footer>
+  `;
+}
+
+function checkAnswer(btn, idx) {
+  if (quizAnswered) return;
+  quizAnswered = true;
+  document.querySelectorAll('.quiz-btn').forEach((b, i) => {
+    b.disabled = true;
+    if (i === quizCorrect) b.classList.add('correct');
+  });
+  if (idx !== quizCorrect) btn.classList.add('wrong');
+  const isRight = idx === quizCorrect;
+  document.getElementById('qfb').textContent = isRight
+    ? '✅ ' + quizFeedbackGood
+    : '❌ ' + quizFeedbackBad;
+}
+
+function esc(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 </script>
 </body>
 </html>
